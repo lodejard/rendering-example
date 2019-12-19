@@ -1,0 +1,30 @@
+﻿"{{# file 'ServiceModel.json' }}":
+    $schema: http://schema.express.azure.com/schemas/2015-01-01-alpha/ServiceModel.json
+    contentVersion: 0.0.0.1
+    serviceMetadata:
+        serviceGroup: TestingEv2Deployment
+        environment: Development
+    serviceResourceGroupDefinitions:
+    -   name: ClusterResourceGroup_Definition
+        serviceResourceDefinitions:
+        -   name: ClusterScripts_Definition
+            composedOf:
+                extension:
+                    rolloutParametersPath: Parameters/ClusterScripts_Parameters.json
+                    shell:
+                        "{{# each ['TerraformClusterPlan', 'TerraformClusterApply', 'TerraformFalconPlan', 'TerraformFalconApply'] }}":
+                        -   type: "{{ @ }}"
+                            properties:
+                                imageName: adm-ubuntu-1710-l
+                                imageVersion: v3
+    serviceResourceGroups:
+        "{{# each values(clusters) }}":
+        -   instanceOf: ClusterResourceGroup_Definition
+            azureSubscriptionId: "{{ azure.subscription }}"
+            azureResourceGroupName: "{{ cluster.name }}"
+            location: "{{ azure.location }}"
+            scopeTags:
+            -   name: "{{ concat('cluster-', key) }}"
+            serviceResources:
+            -   instanceOf: ClusterScripts_Definition
+                name: "{{ concat('ClusterScripts-', key) }}"

@@ -1,0 +1,67 @@
+﻿clusters:
+    x008:
+      $import: testing
+      key: x008
+      cluster:
+        name: falcon-ms-testing-kube-northcentralus-x008
+        location: NorthCentralUS
+        boundary: microsoft
+        cloud: azure
+        orchestrator: kubernetes
+        environment: Testing
+      azure:
+        location: northcentralus
+        tenant: 124edf19-b350-4797-aefc-3206115ffdb3
+        tenantName: MSPublicCloud.onmicrosoft.com
+        subscription: 022a53de-7617-4af9-bf93-41398b7b9d1b
+      domainProfile:
+        dnsPrefix: x008
+        zoneName: ms-testing-falconinternal.io
+      ev2:
+        identity: /subscriptions/022a53de-7617-4af9-bf93-41398b7b9d1b/resourceGroups/ev2-shell-extension/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ev2-operator
+      terraform:
+        backend: kubernetes_microsoft_testing
+    x007:
+      key: x007
+      $import: testing
+      cluster:
+        name: falcon-ms-testing-kube-northcentralus-x007
+        location: NorthCentralUS
+        boundary: microsoft
+        cloud: azure
+        orchestrator: kubernetes
+        environment: Testing
+      azure:
+        location: northcentralus
+        tenant: 124edf19-b350-4797-aefc-3206115ffdb3
+        tenantName: MSPublicCloud.onmicrosoft.com
+        subscription: 022a53de-7617-4af9-bf93-41398b7b9d1b
+      domainProfile:
+        dnsPrefix: x007
+        zoneName: ms-testing-falconinternal.io
+      ev2:
+        identity: /subscriptions/022a53de-7617-4af9-bf93-41398b7b9d1b/resourceGroups/ev2-shell-extension/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ev2-operator
+      terraform:
+        backend: kubernetes_microsoft_testing
+    x009:
+      key: x009
+      $import: testing
+      cluster:
+        name: falcon-ms-testing-kube-northcentralus-x009
+        location: NorthCentralUS
+        boundary: microsoft
+        cloud: azure
+        orchestrator: kubernetes
+        environment: Testing
+      azure:
+        location: northcentralus
+        tenant: 124edf19-b350-4797-aefc-3206115ffdb3
+        tenantName: MSPublicCloud.onmicrosoft.com
+        subscription: 022a53de-7617-4af9-bf93-41398b7b9d1b
+      domainProfile:
+        dnsPrefix: x009
+        zoneName: ms-testing-falconinternal.io
+      ev2:
+        identity: /subscriptions/022a53de-7617-4af9-bf93-41398b7b9d1b/resourceGroups/ev2-shell-extension/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ev2-operator
+      terraform:
+        backend: kubernetes_microsoft_testing

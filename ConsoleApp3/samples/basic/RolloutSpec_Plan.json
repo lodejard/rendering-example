@@ -1,0 +1,34 @@
+﻿{
+    "{{# each values(clusters) }}": {
+        "{{# file concat('RolloutSpec_', key, '_Plan.json') }}": {
+            "$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/RolloutSpec.json",
+            "contentVersion": "1.0.0.0",
+            "rolloutMetadata": {
+                "serviceModelPath": "ServiceModel.json",
+                "scopeBindingsPath": "ScopeBindings.json",
+                "name": "{{ concat('RolloutSpec_', key, '_Plan') }}",
+                "rolloutType": "Major",
+                "notification": {
+                    "email": {
+                        "to": "lodejard@microsoft.com"
+                    }
+                },
+                "buildSource": {
+                    "parameters": {
+                        "versionFile": "buildver.txt"
+                    }
+                }
+            },
+            "orchestratedSteps": [
+                {
+                    "Name": "{{ concat(key, '_Plan') }}",
+                    "TargetType": "ServiceResource",
+                    "TargetName": "{{ concat('ClusterScripts-', key) }}",
+                    "Actions": [
+                        "Shell/terraform-plan"
+                    ]
+                }
+            ]
+        }
+    }
+}

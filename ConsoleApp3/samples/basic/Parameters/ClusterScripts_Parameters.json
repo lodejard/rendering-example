@@ -1,0 +1,198 @@
+{
+    "$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/RolloutParameters.json",
+    "contentVersion": "1.0.0.0",
+    "shellExtensions": [
+        {
+            "name": "terraform-cluster-plan",
+            "type": "TerraformClusterPlan",
+            "properties": {
+                "maxexecutiontime": "PT30M",
+                "skipDeleteAfterExecution": "false"
+            },
+            "package": {
+                "reference": {
+                    "path": "package.tar"
+                }
+            },
+            "launch": {
+                "command": [
+                    "bash",
+                    "-c",
+                    "./scripts/cluster-terraform.sh --target kubernetes_cluster --action plan"
+                ],
+                "identity": {
+                    "type": "UserAssigned",
+                    "userAssignedIdentities": [
+                        "__CLUSTER_EV2_IDENTITY__"
+                    ]
+                },
+                "environmentVariables": [
+                    {
+                        "name": "CLUSTER_EV2_IDENTITY",
+                        "value": "__CLUSTER_EV2_IDENTITY__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_TENANT",
+                        "value": "__CLUSTER_AZURE_TENANT__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_SUBSCRIPTION",
+                        "value": "__CLUSTER_AZURE_SUBSCRIPTION__"
+                    },
+                    {
+                        "name": "CLUSTER_KEY",
+                        "value": "__CLUSTER_KEY__"
+                    },
+                    {
+                        "name": "CLUSTER_TERRAFORM_BACKEND",
+                        "value": "__CLUSTER_TERRAFORM_BACKEND__"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "terraform-cluster-apply",
+            "type": "TerraformClusterApply",
+            "properties": {
+                "maxexecutiontime": "PT30M",
+                "skipDeleteAfterExecution": "false"
+            },
+            "package": {
+                "reference": {
+                    "path": "package.tar"
+                }
+            },
+            "launch": {
+                "command": [
+                    "bash",
+                    "-c",
+                    "./scripts/cluster-terraform.sh --target kubernetes_cluster --action apply"
+                ],
+                "identity": {
+                    "type": "UserAssigned",
+                    "userAssignedIdentities": [
+                        "__CLUSTER_EV2_IDENTITY__"
+                    ]
+                },
+                "environmentVariables": [
+                    {
+                        "name": "CLUSTER_EV2_IDENTITY",
+                        "value": "__CLUSTER_EV2_IDENTITY__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_TENANT",
+                        "value": "__CLUSTER_AZURE_TENANT__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_SUBSCRIPTION",
+                        "value": "__CLUSTER_AZURE_SUBSCRIPTION__"
+                    },
+                    {
+                        "name": "CLUSTER_KEY",
+                        "value": "__CLUSTER_KEY__"
+                    },
+                    {
+                        "name": "CLUSTER_TERRAFORM_BACKEND",
+                        "value": "__CLUSTER_TERRAFORM_BACKEND__"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "terraform-falcon-plan",
+            "type": "TerraformFalconPlan",
+            "properties": {
+                "maxexecutiontime": "PT30M",
+                "skipDeleteAfterExecution": "false"
+            },
+            "package": {
+                "reference": {
+                    "path": "package.tar"
+                }
+            },
+            "launch": {
+                "command": [
+                    "bash",
+                    "-c",
+                    "./scripts/cluster-terraform.sh --target kubernetes_falcon --action plan"
+                ],
+                "identity": {
+                    "type": "UserAssigned",
+                    "userAssignedIdentities": [
+                        "__CLUSTER_EV2_IDENTITY__"
+                    ]
+                },
+                "environmentVariables": [
+                    {
+                        "name": "CLUSTER_EV2_IDENTITY",
+                        "value": "__CLUSTER_EV2_IDENTITY__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_TENANT",
+                        "value": "__CLUSTER_AZURE_TENANT__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_SUBSCRIPTION",
+                        "value": "__CLUSTER_AZURE_SUBSCRIPTION__"
+                    },
+                    {
+                        "name": "CLUSTER_KEY",
+                        "value": "__CLUSTER_KEY__"
+                    },
+                    {
+                        "name": "CLUSTER_TERRAFORM_BACKEND",
+                        "value": "__CLUSTER_TERRAFORM_BACKEND__"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "terraform-falcon-apply",
+            "type": "TerraformFalconApply",
+            "properties": {
+                "maxexecutiontime": "PT30M",
+                "skipDeleteAfterExecution": "false"
+            },
+            "package": {
+                "reference": {
+                    "path": "package.tar"
+                }
+            },
+            "launch": {
+                "command": [
+                    "bash",
+                    "-c",
+                    "./scripts/cluster-terraform.sh --target kubernetes_falcon --action apply"
+                ],
+                "identity": {
+                    "type": "UserAssigned",
+                    "userAssignedIdentities": [
+                        "__CLUSTER_EV2_IDENTITY__"
+                    ]
+                },
+                "environmentVariables": [
+                    {
+                        "name": "CLUSTER_EV2_IDENTITY",
+                        "value": "__CLUSTER_EV2_IDENTITY__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_TENANT",
+                        "value": "__CLUSTER_AZURE_TENANT__"
+                    },
+                    {
+                        "name": "CLUSTER_AZURE_SUBSCRIPTION",
+                        "value": "__CLUSTER_AZURE_SUBSCRIPTION__"
+                    },
+                    {
+                        "name": "CLUSTER_KEY",
+                        "value": "__CLUSTER_KEY__"
+                    },
+                    {
+                        "name": "CLUSTER_TERRAFORM_BACKEND",
+                        "value": "__CLUSTER_TERRAFORM_BACKEND__"
+                    }
+                ]
+            }
+        }
+    ]
+}

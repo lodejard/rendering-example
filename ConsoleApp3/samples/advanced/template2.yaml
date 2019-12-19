@@ -1,0 +1,16 @@
+﻿"{{# each clusters.* }}":
+    "{{#file concat(cluster.name, '/overrides.yaml') }}": 
+        Ingress: asdf
+        Labels:
+            "{{# if key == 'x009' }}":
+                Throwaway: true
+            "{{# else }}":
+                Throwaway: false
+        stuff:
+            "{{# each items(@)[*].{key:[0], value:[1]} }}":
+                "{{# if key != '$import' }}":
+                    "{{ key }}": "{{ value }}"
+                "{{# else }}":
+                    "import": "{{ value }}"
+    "{{#file concat(cluster.name, '/kustomize.yaml') }}": 
+        Etc: etc
